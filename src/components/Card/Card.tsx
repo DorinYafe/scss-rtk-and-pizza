@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { setOrder } from '../../features/order/order-slice';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -7,7 +9,9 @@ import { Order } from '../../types/order';
 
 const MuiCard = ({ id, title, description, price }: Order) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const handleClick = () => {
+    dispatch(setOrder({ id, title, description, price }));
     navigate(`/order/${id}`);
   };
 

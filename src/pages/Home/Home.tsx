@@ -1,10 +1,10 @@
+import { useAppSelector } from '../../app/hooks';
 import MuiCard from '../../components/Card/Card';
-import data from '../../mocks/data.json';
 import { Order } from '../../types/order';
 import classes from './Home.module.scss';
 
 const Home = () => {
-  const { orders } = data;
+  const orders = useAppSelector((state) => state.orders.ordersList);
 
   return (
     <div className={classes.home_container}>
